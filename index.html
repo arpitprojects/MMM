@@ -1,0 +1,204 @@
+<!Doctype html>
+<html>
+<head>
+    <title>
+        Mean Median Mode Calculator
+    </title>
+    <!--MeTa Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!--Put more SEO Meta tags here only -->
+    <!--All the css-->
+
+    <!-- Removing default css of the brower-->
+    <link rel="stylesheet" href="resource/css/reset.css"/>
+    <!-- To remove all the browser provided styles-->
+    <!--Pre define-->
+    <!--All the js-->
+    <script src="vendor/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="vendor/css/materialize.css"/>
+    <link rel="stylesheet" href="vendor/css/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.common.min.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.default.min.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.mobile.all.min.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.default.mobile.min.css"/>
+    <link rel="stylesheet" href="vendor/css/examples-offline.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.rtl.min.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.common-material.min.css"/>
+    <link rel="stylesheet" href="vendor/css/kendo.material.min.css"/>
+    <!--end of predefine stylesheet-->
+    <!--optional cdn -->
+  <!--   <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.rtl.min.css"/>
+
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.mobile.all.min.css"/>
+    <script src="http://ke-ndo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script> -->
+
+    <link rel="stylesheet" href="resource/css/main.css"/>
+
+    <!--Custom stylesheet-->
+    <!--All the fonts-->
+    <!--Null Now Used proxima nova -->
+    <!--All the icons-->
+    <link rel="stylesheet" href="vendor/fonts/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    
+    <!--angular dependency-->
+    <script src="vendor/js/angular.min.js"></script>
+    <script src="vendor/js/angular-route.min.js"></script>
+    <script src="vendor/js/angular-animate.min.js"></script>
+    <script src="vendor/js/angular-sanitize.js"></script>
+    <script src="vendor/js/angular-aria.min.js"></script>
+    <!--close of angular dependency-->
+    <!--Pre define dependency-->
+    <!--        <script src="vendor/js/jquery.min.js"></script>-->
+    <script src="vendor/js/jszip.min.js"></script>
+    <script src="vendor/js/materialize.js"></script>
+    <script src="vendor/js/angular-materialize.min.js"></script>
+    <script src="vendor/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="vendor/js/kendo.all.min.js"></script>
+    <script src="vendor/js/console.js"></script>
+
+    <script src="vendor/js/perfect-scrollbar.min.js"></script>
+    <script src="vendor/js/typed.min.js"></script>
+    <!--End of Pre define dependency-->
+
+    <!--angular scripts -->
+    <script src="app/module.js"></script>
+    <script src="app/controller.js"></script>
+    <script src="app/route.js"></script>
+    <script src="app/service.js"></script>
+    <script src="app/factory.js"></script>
+    <script src="app/directive.js"></script>
+    <!--end of angular scripts-->
+
+    <!--custom-->
+    <script src="resource/js/main.js"></script>
+    <script src="resource/js/script.js"></script>
+    <!--End of custom script-->
+</head>
+<body ng-app="data" ng-cloak="true">
+    <!--Loader-->
+    <div id="loader-wrapper">
+        <div id="loader"></div>        
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!--end of loader-->
+    <!--All the codes-->
+    <div ng-controller="home">
+        <header id="header" class="page-topbar">
+            <!-- start header nav-->
+            <div class="navbar-fixed">
+                <nav class="navbar-color cyan">
+                    <div class="nav-wrapper">
+                        <ul class="left">                      
+                            <li><h1 class="">
+                                <p href="#!" class="">
+                                    <a href="#/home" class="logo-text">Data Analysis</a>
+                                </p>
+                            </h1>
+                        </li>
+                    </ul> 
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#!" class="waves-effect waves-block waves-light translation-button"  data-activates="translation-dropdown"></a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="material-icons">&#xE31D;</i></a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown"><i class="material-icons">notifications</i>
+                        </a>
+                    </li>                        
+                    <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="material-icons md-36">find_in_page</i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- end header nav-->
+</header>
+<aside id="left-sidebar-nav">
+    <ul id="slide-out" class="side-nav fixed leftside-navigation">
+        <li class="user-details">
+            <div class="row">
+                <div class="col s12 m12 l12 padding-0">
+                    <ul class="collection" id="collection">
+                        <li ng-class="active_nav ? 'new_active' : 'none'">
+                            <a href="#/mean" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">timeline</i>Mean</a>
+                        </li>
+                        <li>
+                            <a href="#/median" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">link</i>Median</a>
+                        </li>
+                        <li>
+                            <a href="#/mode" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">sort</i>Mode</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">add</i>Standard Deviation</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">timeline</i>Linear Regression</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">link</i>Multiple Regression</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">sort</i>Logistic Regression</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">add</i>Normal Distribution</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">timeline</i>Binomail Distribution</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">link</i>Poission Regression</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">sort</i>Analysis of Convergence</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">add</i>Time Seris Analysis</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">timeline</i>Decision Tree</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">link</i>Survival Analysis</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">sort</i>Chi Square Test</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="font-weight-600 capitalize white-b waves-effect waves-cyan"><i class="font-weight-600 material-icons margin-right-10">add</i>Non-Linear Least Square</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <a href="#" data-activates="slide-out" id="side-bar-attributes" class="border-radius-0 sidebar-collapse waves-effect waves-light hide-on-large-only"><i id="side-bar" class="material-icons">reorder</i></a>
+</aside>
+</div>
+
+<div id="product-container">
+    <ng-view>
+
+    </ng-view>
+</div>
+<!--Temporary break tags-->
+
+<!--To be removed in future-->
+<br /><br /><br /><br />
+<footer class="page-footer cyan">
+    <div class="footer-copyright">
+        <div class="container">
+            <span>Copyright © 2015 <a class="grey-text text-lighten-4" href="#!" target="_blank">Data Science</a> All rights reserved.</span>
+            <span class="right"> TutorialsPoint <a class="grey-text text-lighten-4" href="http://geekslabs.com/"></a>2017</span>
+        </div>
+    </div>
+</footer>
+<!--Foter closed-->
+</body>
+</html>

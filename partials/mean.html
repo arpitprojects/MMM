@@ -1,0 +1,304 @@
+     <div class="row">
+        <br />
+        <div class="col s12 l6 m6 offset-l3 offset-m3">
+            <center>
+                <h3 class="text-header">{{title}}</h3>
+            </center>
+            <br /><br /><br />
+            <ul id="tabs-swipe-demo" class="tabs">
+                <li ng-class="{ active1: isSet(1) }" class="tab col s6 l4 m4">
+                    <a class="waves-effect waves-light" id="link-tab" href ng-click="setTab(1)">Discrete</a>
+                </li>
+                <li ng-class="{ active1: isSet(2) }" class="tab col s6 l4 m4">
+                    <a class="waves-effect waves-light" id="link-tab" href ng-click="setTab(2)">Continous</a>
+                </li>
+            </ul>
+            <br /><br />
+            <!--FIRST PANEL -->
+            <div ng-show="isSet(1)" id="">
+                <div class="input-field col l9 m9 s12">
+                    <input id="nums" type="text" ng-model="data" class="validate">
+                    <label for="nums">Enter Numbers:</label>
+                </div>
+                <br />
+                <a ng-click="" id="btn-check" class="waves-effect waves-light btn-floating cyan"><i class="material-icons right">send</i></a>
+                <br />
+                <div class="col s9 m9 s12">
+                    <blockquote class="pre-color">Note :Enter the numbers comma separated to get mean. </blockquote>
+                </div>
+
+                <div class="col l9 m9 s12">
+                    <br /><br /><br/>
+                    <div class="col s5"><hr/></div>  
+                    <center><span class="col s2">OR</span></center>
+                    <div class="col s5"><hr/></div>  
+                    <br /><br /><br />
+                </div>
+                <div class="col s9 m9 s12">
+                    <blockquote>Upload a *.csv , *.xlsx file.<a href="http://www.tutorialspoint.com"> Learn about <i  class="material-icons">help</i></a> csv,xslx </blockquote> 
+                </div>
+                <div class="col l9 m9 s12">
+                    <div>
+                        Select a text file: 
+                        <input type="file" id="thisfile">
+                        <br />
+                        <button id="btn-click" class="btn waves-effect waves-green" onclick="check()">Check</button>
+                    </div>
+                    <br />
+                </div>
+                <br /><br /><br /><br />
+                <div class="col s9 m9 s12">
+                    <p>This is the display area</p>
+                    <div id="dis"></div>
+                </div>
+            </div>
+            <!--END OF THE FIRST PANEL -->
+            <!--SECOND PANEL-->
+            <div ng-show="isSet(2)">
+                <div class="col l9 m9 s12">
+                    <div class="card" id="table-mean-padding">
+                        <ul class="ul">
+                            <li>
+                                <a data-target="demoModal" class="modal-trigger btn-floating btn-large waves-effect waves-light red" modal><i class="material-icons">add</i></a>
+
+                            </li>
+                            <li>
+                                <a id="done" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">done</i></a>
+                            </li>
+                            <!--Not visible -->
+                        </ul>
+                        <br />
+                        <center>
+                            <table class="highlight bordered responsive-table" id="new_table">
+                                <thead>
+                                  <tr>
+
+                                      <th data-field="id">Group A</th>
+                                      <th data-field="-"> to </th>
+                                      <th data-field="name">Group B</th>
+                                      <th data-field="price">Frequency</th>
+                                      <th style"color:red;" data-field="del">DELETE </th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <!--All the table <tr></tr> will be dynamically generated-->
+                                <tr ng-repeat="x in table_arr track by $index">
+
+                                    <td><span ng-hide="x.editing" ng-dblclick="editItem(x)">
+                                        {{x.a}}</span>
+                                        <input ng-show="x.editing" ng-model="x.a" ng-blur="doneEdit(x)" autofocus="true"/>   
+                                    </td>
+                                    <td> - </td>
+                                    <td>
+                                        <span ng-hide="x.editing1" ng-dblclick="editItem(x)">
+                                            {{x.b}}</span>
+                                            <input ng-show="x.editing1" ng-model="x.b" ng-blur="doneEdit(x)" autofocus="true"/>
+                                        </td>
+                                        <td>
+                                         <span ng-hide="x-editing3" ng-dblclick="editItem(x)">   
+                                            {{x.f}}</span>
+                                            <input ng-show="x.editing3" ng-model="x.f" ng-blur="doneEdit(x)" autofocus="true"/>
+                                        </td>
+                                        <td><a ng-click="del(x)" class="btn-floating waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </center>
+                    </div>
+
+                    <br /><br /><br />
+                </div>
+            </div>
+
+            <!--END OF PANEL-->
+        </div>
+    </div>
+
+    <!-- Modals markup -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <!-- Pul all the forms here-->
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="a" type="text" ng-model="table.a" class="validate">
+                  <label for="a">Group A</label>
+              </div>
+              <div class="input-field col s6">
+                  <input id="b" type="text" ng-model="table.b" class="validate">
+                  <label for="b">To Group B</label>
+              </div>
+          </div>
+          <div class="input-field col s6">
+              <input id="f" type="text" ng-model="table.f" class="validate">
+              <label for="f">Frequency</label>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a ng-click="add()" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+<script>
+    function check(){
+        var last_array = [];
+        var temp_array = [];
+        console.log('Step 1 crossed');
+        var fileInput = document.getElementById('thisfile');
+        var dis = document.getElementById('dis');
+        var fileName = fileInput.value;
+        console.log('Step 2 '+ fileName);
+        var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+        if(ext == 'csv' || ext == 'xslx'){
+            console.log('File type Ok' + ext)
+        }else{
+            alert('File Type Not supported ' + ext);
+            return false;
+        }
+
+        var file = fileInput.files[0];
+
+        var reader = new FileReader();
+        var main_text_last = [];
+        reader.onload = function(e) {
+            dis.innerText = reader.result;
+            var main_text = reader.result;
+            main_text = main_text.split(/\r?\n/);
+            console.log(main_text[0]);
+            main_text[0] =  main_text[0].split(',');
+            main_text[1] = main_text[1].split(',');
+            for(i=0; i < main_text[1].length;i++){
+
+                main_text_last.push((main_text[1][i]).trim());
+            }
+            console.log(main_text_last);
+            
+            var leni =main_text[0].length;
+            for(i=0;i<leni;i++){
+                
+                main_text[0][i] = main_text[0][i].replace(/\s/g,'')
+                temp_array.push(main_text[0][i].split('-'));
+            }
+            for(i = 0 ; i < leni ;i++){
+                for(j=0;j<2;j++){
+                last_array.push(temp_array[i][j]);
+                }
+            }
+            var odd_array = [];
+            var even_array = [];
+            for(i = 0; i < (last_array.length)/2; i++){
+                even_array.push(last_array[2*i]);
+                odd_array.push(last_array[2*i+1]);
+            }     
+            
+
+            $.ajax({
+                url : 'http://localhost/cgi-bin/projectmmm/mean/upl_mean.py',
+                type:'post',
+                datatype : 'json',
+                crossDomain : true,
+                data : {data1  : even_array , data2: odd_array , data3 : main_text_last},
+                success : function(data){
+                    data = (JSON.stringify(data));
+                    alert('Your Mean is : ' + data);
+                    $('#json').css('display' , 'block');
+                    $('#json').html(data);
+                },error: function(error) {
+                    console.log(error);
+                }
+            })
+
+        }
+
+        reader.readAsText(file); 
+    }
+</script>
+
+<!-- optional script to be removed now -->
+<script>
+    $(document).ready(function(){
+        console.log('Jquery checked');
+        $('#btn-check').click(function(){
+           var val = $('#nums').val();
+           console.log(val);
+           var reg  = /^[0-9]( *, *[0-9])*$/;
+           if(!reg.test(val)){
+            alert('1.) Comma( , ) at start , end\n2.) spaces are not allowed\n');
+            return false;
+        }
+        if(val == ""){
+            alert('Enter Some Value to check the functionality!!');
+        }else{
+            $.ajax({
+                url : 'http://localhost/cgi-bin/projectmmm/mean/dis_mean.py',
+                type:'post',
+                datatype : 'json',
+                crossDomain : true,
+                data : {val_sent_js  : val},
+                success : function(data){
+                    data = (JSON.stringify(data));
+                    alert('Your Mean is : ' + data);
+                    $('#json').css('display' , 'block');
+                    $('#json').html(data);
+                },error: function(error) {
+                    console.log(error);
+                }
+            })
+        }
+        
+    });  
+    })
+
+    $(document).ready(function(){
+        $('#done').click(function(){
+            console.log('Ok');
+            var arr = [];
+            var arr1 = [];
+            var arr2 = [];
+            $("#new_table tbody tr").each(function(){
+                var temp = $(this).find("td:first").text();
+                temp = temp.replace(/(\r\n|\n|\r)/gm,"");
+                temp = temp.replace(/\s/g,'');
+                arr.push(temp); //put elements into array
+            });
+            $("#new_table tbody tr").each(function(){
+                var temp1 = $(this).find("td:first + td").next().text();
+                
+                temp1 = temp1.replace(/(\r\n|\n|\r)/gm,"");
+                temp1 = temp1.replace(/\s/g,'');
+                // console.log('We are at second col '+ temp1);
+                arr1.push(temp1); //put elements into array
+            });
+            //To send frequncy
+            $("#new_table tbody tr").each(function(){
+                var temp2 = $(this).find("td:first + td + td").next().text();
+                
+                temp2 = temp2.replace(/(\r\n|\n|\r)/gm,"");
+                temp2 = temp2.replace(/\s/g,'');
+                // console.log('We are at second col '+ temp1);
+                arr2.push(temp2); //put elements into array
+            });
+            if(arr.length == 0 || arr1.length == 0 || arr2.length == 0){
+                alert('No Table found');
+            }else{
+
+                $.ajax({
+                    url : 'http://localhost/cgi-bin/projectmmm/mean/con_mean.py',
+                    type:'post',
+                    datatype : 'json',
+                    crossDomain : true,
+                    data : {data1  : arr , data2: arr1 , data3 : arr2},
+                    success : function(data){
+                        data = (JSON.stringify(data));
+                        alert('Your Mean is : ' + data);
+                        $('#json').css('display' , 'block');
+                        $('#json').html(data);
+                    },error: function(error) {
+                        console.log(error);
+                    }
+                })
+            }
+
+        }); 
+    });
+</script>

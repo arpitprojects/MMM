@@ -1,0 +1,4 @@
+project prototype:
+
+1.)Side navigation has calculators.
+2.)

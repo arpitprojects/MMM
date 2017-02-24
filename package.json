@@ -1,0 +1,11 @@
+{
+  "name": "projectmmm",
+  "version": "1.0.0",
+  "description": "To calculate mean median mode",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arpit Ananf",
+  "license": "MIT"
+}
